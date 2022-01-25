@@ -2,7 +2,7 @@ import mediapipe as mp
 from cv2 import cv2 as cv2
 from phue import Bridge 
 
-b = Bridge('192.168.1.85') 
+b = Bridge('#Hub IP here') 
 
 #Lumnosité max=254
 
