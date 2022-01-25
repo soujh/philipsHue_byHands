@@ -9,9 +9,9 @@ b = Bridge('#Hub IP here')
 cap = cv2.VideoCapture(0)
 mpHands = mp.solutions.hands #Contient toutes les méthodes pour l'analyse d'une main
 hands=mpHands.Hands() 
-mpDraw= mp.solutions.drawing_utils #cela va nous aider à encader (dessiner) notre main 
+mpDraw= mp.solutions.drawing_utils #cela va nous aider à encader notre main 
 
-doigtsCoor=[(8,6),(12,10),(16,14),(20,18)] #Liste des points à comparer pour définir un doigt commme ouvert/fermer
+doigtsCoor=[(8,6),(12,10),(16,14),(20,18)] #Liste des points à comparer pour définir un doigt commme ouvert/fermé
 pouceCoor=(4,2)
 
 
@@ -32,7 +32,7 @@ while True:
         handPoints=[]
         for landmark in landmarked_hand: #On itère sur chaque mains reconnues 
             mpDraw.draw_landmarks(img,landmark,mpHands.HAND_CONNECTIONS) #On déssine les
-            for idx, lm in enumerate(landmark.landmark): #coordonnées pour chaque points
+            for idx, lm in enumerate(landmark.landmark): #coordonnées pour chaques points
                 h,w,c=img.shape
                 cx,cy=int(lm.x*w),int(lm.y*h) #a la place des coordonnées on cherche à avoir le pixel depuis la droite
                 """
@@ -45,7 +45,7 @@ while True:
                 handPoints.append((cx,cy)) #list des pixels pour chaque landmarks
 
         for point in handPoints:
-            cv2.circle(img,point,7,(56,119,246),cv2.FILLED) #dessiner des cercle sur les points
+            cv2.circle(img,point,7,(56,119,246),cv2.FILLED) #dessiner des cercles sur les points
 
         count=0
         for coor in doigtsCoor:
